@@ -1,0 +1,25 @@
+.displayqs {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.displayqs:last-child {
+  border-bottom: none;
+}
+
+.name {
+  font-size: 14px;
+  color: #979797;
+}
+
+.detail {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.editIcon {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+}
