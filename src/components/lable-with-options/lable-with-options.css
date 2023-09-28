@@ -1,0 +1,24 @@
+.labelContainer {
+  padding: 15px 0;
+  margin: 0 15px;
+  border-bottom: 1px solid #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hide {
+  color: #666666;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.labelContainer h5 {
+  font-size: 20px !important;
+}
+
+.labelContainer h5 span {
+  font-size: 15px !important;
+  font-weight: 500;
+  margin-left: 5px;
+}
