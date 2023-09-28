@@ -37,7 +37,7 @@ const ProfileInformation = ({ data, setData }: InformationProps) => {
         setData={setData}
         value="resume"
         showOptions={true}
-        internal={data?.data?.attributes?.profile?.resume.mandatory}
+        internal={data?.data?.attributes?.profile?.resume?.mandatory}
         show={data?.data?.attributes?.profile?.resume?.show}
         profile={true}
       />

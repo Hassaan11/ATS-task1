@@ -14,14 +14,21 @@ import "./Home.css";
 const Home = () => {
   const [data, setData] = useState<Data>();
   const [image, setImage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     axios
       .get(
         "http://127.0.0.1:4010/api/376.74211850100164/programs/sequi/application-form"
       )
-      .then((res) => setData(res.data))
-      .catch((err) => console.log("Get Error", err));
+      .then((res) => {
+        setData(res.data);
+        setError("");
+      })
+      .catch((err) => {
+        setError(err?.message);
+        console.log("Get Error", err);
+      });
   }, []);
 
   const handleButtonClick = () => {
@@ -57,7 +64,8 @@ const Home = () => {
       <div className="d-flex">
         <Sidebar />
         <div className="d-flex-col w-100">
-          {data && <Header data={data} />}
+          <Header data={data} />
+          {error && <h1 className="text-center">{error}</h1>}
           <div className="homecontainer">
             <div className="headingcontainer shadow bg-white">
               <h4 className="title">Upload cover image</h4>
@@ -91,13 +99,10 @@ const Home = () => {
                 </button>
               )}
             </div>
-            {data && (
-              <>
-                <PersonalInformation data={data} setData={setData} />
-                <ProfileInformation data={data} setData={setData} />
-                <AdditionalQuestions data={data} setData={setData} />
-              </>
-            )}
+
+            <PersonalInformation data={data} setData={setData} />
+            <ProfileInformation data={data} setData={setData} />
+            <AdditionalQuestions data={data} setData={setData} />
           </div>
         </div>
       </div>
