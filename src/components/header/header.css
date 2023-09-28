@@ -1,0 +1,40 @@
+.headerComponent {
+  background-color: #ffffff;
+  margin-top: 30px;
+
+  box-shadow: 0 0rem 0.2rem rgba(0, 0, 0, 0.15);
+}
+
+.headerComponent span {
+  padding: 30px 0;
+  width: 24%;
+  text-align: center;
+  color: #000000;
+}
+
+.headerComponent .line {
+  height: 50px;
+  width: 1px;
+  background-color: #c4c4c4;
+}
+
+.headerComponent .active {
+  color: white;
+  background-color: #00635b;
+  position: relative;
+}
+.headerComponent .active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #00635b;
+}
+
+.savebtn1 {
+  background-color: #00635b;
+  color: white;
+}
