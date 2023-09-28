@@ -1,0 +1,45 @@
+.addquestionform .type {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.addquestionform .dropdown {
+  height: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 15px;
+  color: black;
+}
+
+.addquestionform .file {
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #979797;
+}
+.addquestionform .text {
+  text-indent: 10px;
+}
+
+.deleteqs {
+  background-color: transparent;
+  border: none;
+}
+
+.savebtn {
+  background-color: #087b2f;
+  color: white;
+  height: 35px;
+  width: 60px;
+  border: none;
+  border-radius: 10px;
+}
+
+.updatebtn {
+  background-color: #087b2f;
+  color: white;
+  height: 35px;
+  width: 80px;
+  border: none;
+  border-radius: 10px;
+}
