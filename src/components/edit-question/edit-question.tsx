@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DownOutlined, MinusOutlined } from "@ant-design/icons";
+import { CloseOutlined, DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Space, Checkbox } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
@@ -34,8 +34,12 @@ const EditQuestion = ({
 
     if (file) {
       if (file.size <= 1024 * 1024) {
-        let image = URL.createObjectURL(file);
-        update("question", image);
+        if (file.type.startsWith("image/")) {
+          let image = URL.createObjectURL(file);
+          update("question", image);
+        } else {
+          alert("Please select an image file.");
+        }
       } else {
         alert("File size exceeds the 1MB limit. Please choose a smaller file.");
         e.target.value = null;
@@ -307,7 +311,7 @@ const EditQuestion = ({
           className="my-3 d-flex align-items-center deleteqs"
           style={{ color: "red" }}
         >
-          <MinusOutlined style={{ fontSize: "20px" }} />
+          <CloseOutlined style={{ fontSize: "20px" }} />
           <span className="questionbtn"> Delete question</span>
         </button>
         <button className="updatebtn" onClick={saveQuestion}>

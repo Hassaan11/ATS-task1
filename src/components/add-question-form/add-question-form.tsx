@@ -1,4 +1,4 @@
-import { DownOutlined, MinusOutlined } from "@ant-design/icons";
+import { CloseOutlined, DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Space } from "antd";
 import { useState } from "react";
@@ -28,7 +28,11 @@ const AddQuestionForm = ({ data, setData, setOpen, type }: any) => {
 
     if (file) {
       if (file.size <= 1024 * 1024) {
-        setQuestion({ ...question, question: URL.createObjectURL(file) });
+        if (file.type.startsWith("image/")) {
+          setQuestion({ ...question, question: URL.createObjectURL(file) });
+        } else {
+          alert("Please select an image file.");
+        }
       } else {
         alert("File size exceeds the 1MB limit. Please choose a smaller file.");
         e.target.value = null;
@@ -283,7 +287,7 @@ const AddQuestionForm = ({ data, setData, setOpen, type }: any) => {
           className="my-3 d-flex align-items-center deleteqs"
           style={{ color: "red" }}
         >
-          <MinusOutlined style={{ fontSize: "20px" }} />
+          <CloseOutlined style={{ fontSize: "20px" }} />
           <span className="questionbtn"> Delete question</span>
         </button>
         <button className="savebtn" onClick={saveQuestion}>

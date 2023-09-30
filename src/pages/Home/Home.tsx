@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DeleteOutlined, UploadOutlined } from "@ant-design/icons";
+import { CloseOutlined, UploadOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 import Header from "../../components/header/header";
@@ -133,11 +133,15 @@ const Home = () => {
 
     if (file) {
       if (file.size <= 1024 * 1024) {
-        setImage(URL.createObjectURL(file));
         if (data) {
-          const newData: Data = { ...data };
-          newData.data.attributes.coverImage = URL.createObjectURL(file);
-          setData(newData);
+          if (file.type.startsWith("image/")) {
+            setImage(URL.createObjectURL(file));
+            const newData: Data = { ...data };
+            newData.data.attributes.coverImage = URL.createObjectURL(file);
+            setData(newData);
+          } else {
+            alert("Please select an image file.");
+          }
         }
       } else {
         alert("File size exceeds the 1MB limit. Please choose a smaller file.");
@@ -159,7 +163,7 @@ const Home = () => {
         <Sidebar />
         <div className="d-flex-col w-100">
           <Header data={data} />
-          {error && <h1 className="text-center">{error}</h1>}
+          {error && <h1 className="text-center">{error} </h1>}
           <div className="homecontainer">
             <div className="headingcontainer shadow bg-white">
               <h4 className="title">Upload cover image</h4>
@@ -171,7 +175,9 @@ const Home = () => {
                     className="m-3 mb-0 d-flex align-items-center deleteqs"
                     style={{ color: "#A80000" }}
                   >
-                    <DeleteOutlined style={{ fontSize: "20px" }} />
+                    <CloseOutlined
+                      style={{ fontSize: "15px", marginTop: "5px" }}
+                    />
                     <span className="deleteImg"> Delete & re-upload</span>
                   </button>
                 </>
