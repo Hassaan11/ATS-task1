@@ -163,7 +163,11 @@ const Home = () => {
         <Sidebar />
         <div className="d-flex-col w-100">
           <Header data={data} />
-          {error && <h1 className="text-center">{error} </h1>}
+          {error && (
+            <h6 className="mt-4 text-center">
+              {`${error} as backend server is not running so I have added the default state`}{" "}
+            </h6>
+          )}
           <div className="homecontainer">
             <div className="headingcontainer shadow bg-white">
               <h4 className="title">Upload cover image</h4>
